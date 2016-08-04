@@ -2,7 +2,15 @@
   // Setup the shell
   var cliHistory = new Josh.History();
   var shell = Josh.Shell({history: cliHistory});
-  // window.shell = Josh.Shell({history: cliHistory});
+
+  // Resize shell panel
+  function resizeShellPanel() {
+    var shellPanel = document.getElementById("shell-panel");
+    shellPanel.style.height = window.innerHeight - 30 + "px";
+    shell.scrollToBottom();
+  }
+  var debouncedResizeShellPanel = _.debounce(resizeShellPanel, 300);
+  window.onresize = debouncedResizeShellPanel;
 
   // Configure prompt
   shell.onNewPrompt(function(callback) {
@@ -82,4 +90,5 @@
 
   // Start the shell
   shell.activate();
+  resizeShellPanel();
 }).call(this)
