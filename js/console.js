@@ -61,8 +61,8 @@
   }
 
   // Custom commands
-  shell.templates.not_a_file = _.template("<div><%=cmd%>: <%=path%>: Not a file</div>")
   shell.templates.file_content = _.template("<div><%=content%></div>")
+  // shell.templates.not_found implemented in pathhandler.js
   shell.setCommandHandler("cat", {
     exec: function(cmd, args, callback) {
       result = []
@@ -71,7 +71,7 @@
           if(node && node.content) {
             result.push(shell.templates.file_content({content: node.content}));
           } else {
-            result.push(shell.templates.not_a_file({cmd: "cat", path: path}));
+            result.push(shell.templates.not_found({cmd: "cat", path: path}));
           }
         })
       })
