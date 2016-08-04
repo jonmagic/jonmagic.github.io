@@ -24,6 +24,7 @@ var Josh = Josh || {};
     });
     var _shell = shell;
     _shell.templates.not_found = _.template("<div><%=cmd%>: <%=path%>: No such file or directory</div>");
+    _shell.templates.not_a_dir = _.template("<div><%=cmd%>: <%=path%>: Not a directory</div>");
     _shell.templates.ls = _.template("<div><% _.each(nodes, function(node) { %><span><%=node.name%>&nbsp;</span><% }); %></div>");
     _shell.templates.pwd = _.template("<div><%=node.path %>&nbsp;</div>");
     _shell.templates.prompt = _.template("<%= node.path %> $");
@@ -130,6 +131,9 @@ var Josh = Josh || {};
       self.getNode(args[0], function(node) {
         if(!node) {
           return callback(_shell.templates.not_found({cmd: 'cd', path: args[0]}));
+        }
+        if(node.content) {
+          return callback(_shell.templates.not_a_dir({cmd: 'cd', path: args[0]}));
         }
         self.current = node;
         return callback();

@@ -45,6 +45,7 @@
   var resume = {
     name: "resume.md",
     path: "/resume.md",
+    content: "hello world",
     childnodes: [],
     children: [],
     parent: root
