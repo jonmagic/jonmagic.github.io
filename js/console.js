@@ -61,22 +61,23 @@
   }
 
   // Custom commands
-  shell.setCommandHandler("hello", {
+  shell.templates.not_a_file = _.template("<div><%=cmd%>: <%=path%>: Not a file</div>")
+  shell.templates.file_content = _.template("<div><%=content%></div>")
+  shell.setCommandHandler("cat", {
     exec: function(cmd, args, callback) {
-      var arg = args[0] || '';
-      var response = "who is this " + arg + " you are talking to?";
-      if(arg === 'josh') {
-          response = 'pleased to meet you.';
-      } else if(arg === 'world') {
-          response = 'world says hi.'
-      } else if(!arg) {
-          response = 'who are you saying hello to?';
-      }
-      callback(response);
+      result = []
+      _.each(args, function(path) {
+        pathhandler.getNode(path, function(node) {
+          if(node && node.content) {
+            result.push(shell.templates.file_content({content: node.content}));
+          } else {
+            result.push(shell.templates.not_a_file({cmd: "cat", path: path}));
+          }
+        })
+      })
+      callback(result.join("\n"))
     },
-    completion: function(cmd, arg, line, callback) {
-      callback(shell.bestMatch(arg, ['world', 'josh']))
-    }
+    completion: pathhandler.pathCompletionHandler
   });
 
   // Start the shell
