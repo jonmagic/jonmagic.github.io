@@ -11,31 +11,6 @@
 
   // Pathhandler
   var pathhandler = new Josh.PathHandler(shell);
-  // function buildTree() {
-  //   var fs = {
-  //     resume: {},
-  //     avatars: {},
-  //     posts: {}
-  //   };
-  //
-  //   function build(parent, node) {
-  //     parent.childnodes = _.map(_.pairs(node), function(pair) {
-  //       var child = {
-  //         name: pair[0],
-  //         path: parent.path + "/" + pair[0],
-  //         parent: parent
-  //       };
-  //       build(child, pair[1]);
-  //       return child;
-  //     });
-  //     parent.children = _.keys(node);
-  //     return parent;
-  //   }
-  //   var tree = build({name: "", path: ""}, fs);
-  //   tree.path = '/';
-  //   return tree;
-  // }
-  // window.root = buildTree();
   var root = {
     name: "",
     path: "/",
