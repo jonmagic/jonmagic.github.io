@@ -1,0 +1,76 @@
+.container {
+  width: 640px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+}
+
+h1 {
+  font-size: 4.5em;
+}
+
+.box {
+  margin-top: -4px;
+  position: relative;
+}
+
+.box.right.first {
+  border-top: none;
+  border-radius: 0 0 6px 0;
+}
+
+.right.box {
+  margin-left: 4px;
+  border-top: 4px solid #FFA10D;
+  border-right: 4px solid #FFA10D;
+  border-bottom: 4px solid #FFA10D;
+  border-radius: 0 6px 6px 0;
+}
+
+.left.box {
+  margin-right: 4px;
+  border-top: 4px solid #FFA10D;
+  border-left: 4px solid #FFA10D;
+  border-bottom: 4px solid #FFA10D;
+  border-radius: 6px 0 0 6px;
+}
+
+.right .year-marker {
+  font-size: 0.6em;
+  position: absolute;
+  right: -3em;
+}
+
+.right .year-marker .line {
+  border-top: 4px solid #E8530C;
+  position: absolute;
+  top: 9px;
+  left: -10px;
+  width: 8px;
+}
+
+.left .year-marker {
+  font-size: 0.6em;
+  position: absolute;
+  left: -3em;
+}
+
+.left .year-marker .line {
+  border-top: 4px solid #E8530C;
+  position: absolute;
+  top: 9px;
+  right: -10px;
+  width: 8px;
+}
+
+.year-marker.start {
+  top: 0;
+}
+
+.year-marker.end {
+  bottom: 0;
+}
+
+.work-description {
+  padding: 2em;
+}
